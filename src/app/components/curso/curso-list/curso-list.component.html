@@ -1,0 +1,31 @@
+<main>
+    <div style="display: flex; align-items: center; justify-content: center; flex-direction: column;" class="p-2">
+        <h2 style="font-size: 2.5rem;" class="m-4">Cursos</h2>
+        <a type="button" href="principal/curso/new" class="btn btn-success" mdbRipple>Adicionar Curso</a>
+    </div>
+<div>
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Posição:</th>
+        <th scope="col">Identificador:</th>
+        <th scope="col">Nome do Curso:</th>
+        <th scope="col">Ação:</th>
+      </tr>
+    </thead>
+    <tbody>
+        @for (curso of listaCurso; track $index){
+    <tr>
+        <td>{{ $index + 1 }}</td>
+        <td>ID: {{curso.id}}</td>
+        <td>{{curso.nome}}</td>
+        <td>
+            <a href="principal/curso/edit/{{curso.id}}" class="btn btn-warning btn-sm ms-1 me-1">Editar</a>
+            <a (click)="delete(curso)" class="btn btn-danger btn-sm ms-1 me-1">Deletar</a>
+        </td>
+    </tr>
+}
+    </tbody>
+  </table>
+</div>
+</main>

@@ -1,0 +1,36 @@
+<main>
+    <div style="display: flex; align-items: center; justify-content: center; flex-direction: column;" class="p-2">
+        <h2 style="font-size: 2.5rem;" class="m-4">Professores</h2>
+        <a type="button" href="principal/professor/new" class="btn btn-success" mdbRipple>Adicionar Professor</a>
+    </div>
+    <div>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Posição:</th>
+                    <th scope="col">Identificador:</th>
+                    <th scope="col">Nome do Professor:</th>
+                    <th scope="col">Telefone:</th>
+                    <th scope="col">Email:</th>
+                    <th scope="col">Formação:</th>
+                </tr>
+            </thead>
+            <tbody>
+                @for (professor of listaProfessor; track $index) {
+                <tr>
+                    <td>{{ $index + 1 }}</td>
+                    <td>ID: {{professor.id}}</td>
+                    <td>{{professor.nome}}</td>
+                    <td>{{professor.telefone}}</td>
+                    <td>{{professor.email}}</td>
+                    <td>{{professor.formacao}}</td>
+                    <td>
+                        <a href="principal/professor/edit/{{professor.id}}" class="btn btn-warning btn-sm ms-1 me-1">Editar</a>
+                        <a (click)="delete(professor)" class="btn btn-danger btn-sm ms-1 me-1">Deletar</a>
+                    </td>
+                </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</main>

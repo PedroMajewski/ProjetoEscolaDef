@@ -1,0 +1,18 @@
+<main  style="display: flex; align-items: center; justify-content: center; flex-direction: column;">
+    <h2 class="p-4 mb-2">Cadastro/Edição de Professor: </h2>
+    <div class="card" style="max-width: 100vw;">
+        <div class="card-body centralizar">
+            <form #formulario="ngForm">
+                <label required [ngModel]="professor.nome" for="">Nome do Professor: </label>
+                <input type="text" class="form-control" name="nome">
+                <label [ngModel]="professor.telefone" for="">Telefone Professor: </label>
+                <input type="text" class="form-control" name="telefone">
+                <label [ngModel]="professor.email" for="">Email Professor: </label>
+                <input type="text" class="form-control" name="email">
+                <label [ngModel]="professor.formacao" for="">Formação Professor: </label>
+                <input type="text" class="form-control" name="formacao">
+                <button (click)="save()" [disabled]="!formulario.valid" class="btn btn-success mt-2">Salvar</button>
+            </form>
+        </div>
+    </div>
+</main>

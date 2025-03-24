@@ -1,0 +1,36 @@
+<main>
+    <div style="display: flex; align-items: center; justify-content: center; flex-direction: column;" class="p-2">
+        <h2 style="font-size: 2.5rem;" class="m-4">Turmas</h2>
+        <a type="button" href="principal/turma/new" class="btn btn-success" mdbRipple>Adicionar Turma</a>
+    </div>
+    <div>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Posição:</th>
+                    <th scope="col">Identificador:</th>
+                    <th scope="col">Nome Turma:</th>
+                    <th scope="col">Curso:</th>
+                    <th scope="col">Professor:</th>
+                    <th scope="col">Alunos:</th>
+                </tr>
+            </thead>
+            <tbody>
+                @for (turma of ListaTurma; track $index) {
+                <tr>
+                    <td>{{ $index + 1 }}</td>
+                    <td>ID: {{turma.id}}</td>
+                    <td>{{turma.nome}}</td>
+                    <td>{{turma.Curso}}</td>
+                    <td>{{turma.Professor}}</td>
+                    <td>{{turma.Aluno}}</td>
+                    <td>
+                        <a href="principal/turma/edit/{{turma.id}}" class="btn btn-warning btn-sm ms-1 me-1">Editar</a>
+                        <a (click)="delete(turma)" class="btn btn-danger btn-sm ms-1 me-1">Deletar</a>
+                    </td>
+                </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</main>

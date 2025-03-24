@@ -1,0 +1,38 @@
+<div style="display: flex; justify-content: center; align-items: center; height: 100vh; flex-direction: column;background-color: #686868;">
+    <div style="display: flex; justify-content: center; align-items: center;
+    flex-direction: column;box-shadow: 0 0 1rem #00000032; border-radius: 1rem; border-width: 1px;
+    border-style: solid; border-color: rgba(128, 128, 128, 0.152);background-color: #fff;" class="p-5">
+
+    <h2>Login</h2>
+    <h4 style="font-size: 1rem;font-weight: 400;">Sistema Acadêmico</h4>
+     <div class="p-1" style="min-width: 15vw;">
+        <div data-mdb-input-init class="form-outline mb-4">
+          <mdb-form-control>
+            <input [(ngModel)]="login.username" mdbInput type="text" id="login" for="login" class="form-control"/>
+            <label class="form-label" mdbLabel for="login">Username:</label>
+          </mdb-form-control>
+        </div>
+      
+        <div data-mdb-input-init class="form-outline mb-4">
+          <mdb-form-control>
+          <input [(ngModel)]="login.password" mdbInput type="password" for="password" id="form1Example2" class="form-control" />
+          <label class="form-label" mdbLabel for="password">Senha:</label>
+        </mdb-form-control>
+        </div>
+      
+        <div class="row mb-4">
+          <div class="col d-flex justify-content-center">
+
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" value="" id="form1Example3" checked />
+              <label class="form-check-label" for="form1Example3"> Lembrar acesso </label>
+            </div>
+          </div>
+        </div>
+      
+        <button type="button" class="btn btn-primary btn-block" (click)="logar()">Acessar</button>
+      </div>
+    </div>
+</div>
+
+
