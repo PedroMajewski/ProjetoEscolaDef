@@ -3,6 +3,7 @@ import { Aluno } from '../../../models/aluno';
 import { ActivatedRoute } from '@angular/router';
 import { FormsModule, NgForm } from '@angular/forms';
 import { MdbFormsModule } from 'mdb-angular-ui-kit/forms';
+import { AlunoService } from '../../../services/aluno.service';
 
 @Component({
   selector: 'app-aluno-form',
@@ -12,27 +13,23 @@ import { MdbFormsModule } from 'mdb-angular-ui-kit/forms';
   styleUrl: './aluno-form.component.scss'
 })
 export class AlunoFormComponent {
-  aluno: Aluno = new Aluno();
+    aluno: Aluno = new Aluno();
   
     RotaAtiva = inject(ActivatedRoute);
-  
+    alunoService = inject(AlunoService);
+
     constructor(){
       let id = this.RotaAtiva.snapshot.params['id'];
-        if(id) { //FindById
-          let aluno1 = new Aluno();
-    
-          aluno1.id = 1;
-          aluno1.nome = 'Pedro Majewski';
-    
-          this.aluno = aluno1;
-        }
     }
   
-    save(){
-      if(this.aluno.id > 0) {
-        alert('Atualizando o Aluno');
-      }else {
-        alert('Salvando o Aluno');
+   save(aluno: Aluno){
+    this.alunoService.save(aluno).subscribe({
+      next: (mensagemSaveAluno) => {
+        alert("Aluno salvo com sucesso!")
+      },
+      error: (error) => {
+        alert("Erro ao salvar aluno : " + error)
       }
-    }
+    })
+   } 
 }

@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { Aluno } from '../../../models/aluno';
+import { AlunoService } from '../../../services/aluno.service';
 
 @Component({
   selector: 'app-aluno-list',
@@ -10,32 +11,32 @@ import { Aluno } from '../../../models/aluno';
 })
 export class AlunoListComponent {
   listaAluno: Aluno[] = [];
+
+  alunoService = inject(AlunoService);
   
     constructor(){
       this.findAll();
     }
   
     findAll(){
-  
-      let aluno1 = new Aluno();
-      aluno1.id = 1;
-      aluno1.nome = "João Melão"
-      aluno1.telefone = "45912345678"
-      aluno1.cadastrocompleto = true
-  
-      let aluno2 = new Aluno();
-      aluno2.id = 2;
-      aluno2.nome = "José Antonho"
-      aluno2.telefone = ""
-      aluno2.cadastrocompleto = false
-  
-      this.listaAluno.push(aluno1,aluno2)
+      this.alunoService.findAll().subscribe({
+        next: (listaRetornadaAluno) => {
+          this.listaAluno = listaRetornadaAluno;
+        },
+        error: (error) => {
+          alert('Erro ao carregar a lista de Alunos' + error);
+        }
+      });
     }
   
     delete(listaAluno: Aluno){
-      let indice = this.listaAluno.findIndex(x => {return x.id == listaAluno.id});
-      if(confirm('Deseja o arquivar o Aluno: ' + listaAluno.nome + '?')){
-        this.listaAluno.splice(indice, 1);
-      }
+      this.alunoService.deleteById(listaAluno.id).subscribe({
+        next: (mensagemDelete) => {
+          alert("Aluno deletado com sucesso!: " + mensagemDelete);
+        },
+        error: (error) =>{
+          alert("Erro ao excluir aluno :" + error);
+        }
+      })
     }
 }

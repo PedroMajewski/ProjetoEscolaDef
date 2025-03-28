@@ -1,7 +1,9 @@
+import { Turma } from "./turma";
+
 export class Professor {
     id!: number;
     nome!: string;
-    telefone!: string;
+    cpf!: string;
     email!: string;
-    formacao!: string;
+    especialidade!: string;
 }
