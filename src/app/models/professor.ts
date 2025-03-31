@@ -6,4 +6,6 @@ export class Professor {
     cpf!: string;
     email!: string;
     especialidade!: string;
+    telefone!: string;
+    formacao!: string;
 }

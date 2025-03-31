@@ -9,7 +9,7 @@ import { Observable } from 'rxjs';
 export class TurmaService {
 
   http = inject(HttpClient);
-  APITurma = "http://locahost:8080/api/turma";
+  APITurma = "http://localhost:8080/api/turma";
 
   constructor() { }
 
@@ -17,8 +17,8 @@ export class TurmaService {
     return this.http.post<Turma>(this.APITurma+"/save", turma, {responseType: 'text' as 'json'});
   }
 
-  update(turma: Turma): Observable<Turma>{
-    return this.http.put<Turma>(this.APITurma+"/update", turma, {responseType: 'text' as 'json'});
+  update(turma: Turma, id: number): Observable<Turma>{
+    return this.http.put<Turma>(this.APITurma+"/update/" + id, turma, {responseType: 'text' as 'json'});
   }
 
   deleteById(id: number): Observable<Turma>{

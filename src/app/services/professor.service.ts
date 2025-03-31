@@ -9,7 +9,7 @@ import { Observable } from 'rxjs';
 export class ProfessorService {
 
   http = inject(HttpClient);
-  APIProfessor = "http://locahost:8080/api/professor";
+  APIProfessor = "http://localhost:8080/api/professor";
 
   constructor() { }
 
@@ -17,8 +17,8 @@ export class ProfessorService {
     return this.http.post<Professor>(this.APIProfessor+"/save", professor, {responseType: 'text' as 'json'});
   }
 
-  update(professor: Professor): Observable<Professor>{
-    return this.http.put<Professor>(this.APIProfessor+"/update", professor, {responseType: 'text' as 'json'});
+  update(professor: Professor, id: number): Observable<Professor>{
+    return this.http.put<Professor>(this.APIProfessor+"/update/" + id, professor, {responseType: 'text' as 'json'});
   } 
 
   deleteById(id: number): Observable<Professor>{

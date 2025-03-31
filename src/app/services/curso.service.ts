@@ -9,7 +9,7 @@ import { Observable } from 'rxjs';
 export class CursoService {
 
   http = inject(HttpClient);
-  APICurso = "http://locahost:8080/api/curso";
+  APICurso = "http://localhost:8080/api/curso";
 
   constructor() { }
 
@@ -17,8 +17,8 @@ export class CursoService {
     return this.http.post<Curso>(this.APICurso+"/save", curso, {responseType: 'text' as 'json'});
   }
 
-  update(curso:Curso): Observable<Curso>{
-    return this.http.put<Curso>(this.APICurso+"/update", curso, {responseType: 'text' as 'json'});
+  update(curso:Curso, id: number): Observable<Curso>{
+    return this.http.put<Curso>(this.APICurso+"/update/" + id, curso, {responseType: 'text' as 'json'});
   }
 
   deleteById(id: number): Observable<Curso>{

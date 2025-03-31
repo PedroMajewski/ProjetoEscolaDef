@@ -8,4 +8,7 @@ export class Turma {
     semestre!: string;
     ano!: string;
     turno!: string;
+    Aluno!: string[];
+    Curso!: string;
+    Professor!: string;
 }

@@ -2,12 +2,20 @@
     <h2 class="p-4 mb-2">Cadastro/Edição de Aluno: </h2>
     <div class="card" style="max-width: 100vw;">
         <div class="card-body centralizar">
-            <form #formulario="ngForm">
-                <label required [ngModel]="aluno.nome" for="">Nome do Aluno: </label>
-                <input type="text" class="form-control" name="nome">
-                <label [ngModel]="aluno.telefone" for="">Telefone Aluno: </label>
-                <input type="text" class="form-control" name="telefone">
-                <button (click)="save()" [disabled]="!formulario.valid" class="btn btn-success mt-2">Salvar</button>
+            <form #formulario="ngForm" (submit)="save(aluno)">
+                <label for="">Nome do Aluno: </label>
+                <input required [ngModel]="aluno.nome" type="text" class="form-control" name="nome" mdbInput>
+                <label for="">CPF Aluno: </label>
+                <input [ngModel]="aluno.cpf" type="text" class="form-control" name="cpf" mdbInput>
+                <label for="">Telefone Aluno: </label>
+                <input [ngModel]="aluno.telefone" type="text" class="form-control" name="telefone" mdbInput>
+                <label for="">Cadastro Completo?: </label>
+                <input [ngModel]="aluno.telefone" type="text" class="form-control" name="cadastrocompleto" mdbInput>
+                @if (aluno.id > 0){
+                    <button type="submit" [disabled]="!formulario.valid" class="btn btn-success mt-2">Atualizar</button>
+                }@else{
+                    <button type="submit" [disabled]="!formulario.valid" class="btn btn-success mt-2">Salvar</button>
+                }
             </form>
         </div>
     </div>

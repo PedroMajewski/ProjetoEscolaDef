@@ -1,5 +1,3 @@
-import { Turma } from "./turma";
-
 export class Aluno {
     id!: number;
     nome!: string;
