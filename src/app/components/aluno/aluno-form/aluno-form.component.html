@@ -9,8 +9,6 @@
                 <input [ngModel]="aluno.cpf" type="text" class="form-control" name="cpf" mdbInput>
                 <label for="">Telefone Aluno: </label>
                 <input [ngModel]="aluno.telefone" type="text" class="form-control" name="telefone" mdbInput>
-                <label for="">Cadastro Completo?: </label>
-                <input [ngModel]="aluno.telefone" type="text" class="form-control" name="cadastrocompleto" mdbInput>
                 @if (aluno.id > 0){
                     <button type="submit" [disabled]="!formulario.valid" class="btn btn-success mt-2">Atualizar</button>
                 }@else{

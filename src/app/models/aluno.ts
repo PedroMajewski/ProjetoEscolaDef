@@ -3,5 +3,4 @@ export class Aluno {
     nome!: string;
     cpf!: string;
     telefone!: string;
-    cadastrocompleto!: boolean;
 }
